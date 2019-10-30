@@ -4,7 +4,7 @@ export class Form extends Component {
     render() {
         return (
             <div>
-                <h1>Añadir Lead Form </h1>
+                <h1>Añadir Usuario </h1>
             </div>
         )
     }

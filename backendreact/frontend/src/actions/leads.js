@@ -1,16 +1,16 @@
 import axios from 'axios';
 import { createMessage, returnErrors } from './messages';
+import { tokenConfig } from './auth';
 
 import { GET_LEADS, DELETE_LEAD, ADD_LEAD, GET_ERRORS } from './types';
 
-// GET LEADS
+// GET USERS
 
-export const getLeads = () => dispatch => {
+export const getLeads = () => (dispatch, getState) => {
     axios
-        .get("/api/leads/")
+        .get("/api/leads/", tokenConfig(getState))
         .then(res => {
             dispatch({
-
                 type: GET_LEADS,
                 payload: res.data
 
@@ -20,9 +20,10 @@ export const getLeads = () => dispatch => {
             err.response.data, err.response.status)));
 };
 
-export const deleteLead = (id) => dispatch => {
+//DETELE USERS
+export const deleteLead = id => (dispatch, getState) => {
     axios
-        .delete(`/api/leads/${id}/`)
+        .delete(`/api/leads/${id}/`, tokenConfig(getState))
         .then(res => {
             dispatch(createMessage({ deleteLead: "Persona Eliminada" }));
             dispatch({
@@ -34,9 +35,10 @@ export const deleteLead = (id) => dispatch => {
         .catch(err => console.log(err));
 };
 
-export const addLead = lead => dispatch => {
+//AÑADIR USERS
+export const addLead = lead => (dispatch, getState) => {
     axios
-        .post("/api/leads/", lead)
+        .post("/api/leads/", lead, tokenConfig(getState))
         .then(res => {
             dispatch(createMessage({ addLead: "Persona Agregada" }));
             dispatch({

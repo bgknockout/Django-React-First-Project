@@ -1,3 +1,4 @@
 {
-    "python.pythonPath": "/home/felipe/.local/share/virtualenvs/django-react2-3H65v3fg/bin/python"
+    "python.pythonPath": "/home/felipe/.local/share/virtualenvs/django-react2-3H65v3fg/bin/python",
+    "python.formatting.provider": "black"
 }
